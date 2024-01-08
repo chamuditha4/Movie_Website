@@ -1,6 +1,4 @@
-<?php require="script.php"
-
-?>
+<?php require 'script.php';?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,30 +11,35 @@
 <body>
 
     <?php 
+        if(isset($_POST["send"])){ // Changed to check if send is set in the POST array
     
-       if(!empty($_POST["send"])){
-
-         $first_name = $_POST["first_name"];
-         $last_name = $_POST["last_name"];
-         $email = $_POST["email"];
-         $mobile = $_POST["mobile"];
-         $comment = $_POST["comment"];
-         $toEmail = $_POST["gayeshaupeshika@gmail.com"];
-
-
-         $mailHeaders = "FirstName: " . $first_name . "\r\n 
-                          LastName: "    . @last_name . "\r\n 
-                          Email:   "     . @email . "\r\n
-                        Mobile:    "     . @mobile . "\r\name
-                        Comment: "       . @comment . "\r\n";
-
-
-        if(mail($toEmail, $first_name, $last_name, $mailHeaders)) {
-            $Message = "Your Information is Received Successfully. ";
+        // Assigning POST data to variables
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $email = $_POST["email"];
+        $mobile = $_POST["mobile"];
+        $comment = $_POST["comment"];
+        $toEmail = "gayeshaupeshika@gmail.com"; // Email address corrected
+    
+        // Forming the email header
+        $mailHeaders = "From: " . $first_name . " " . $last_name . "<" . $email . ">\r\n";
+        $mailHeaders .= "Reply-To: " . $email . "\r\n";
+        $mailHeaders .= "Content-Type: text/plain; charset=utf-8\r\n";
+    
+        $messageBody = "First Name: " . $first_name . "\n";
+        $messageBody .= "Last Name: " . $last_name . "\n";
+        $messageBody .= "Email: " . $email . "\n";
+        $messageBody .= "Mobile: " . $mobile . "\n";
+        $messageBody .= "Comment: " . $comment . "\n";
+    
+        // Using mail function to send the email
+        if(mail($toEmail, "New contact form submission", $messageBody, $mailHeaders)) {
+            $message = "Your information is received successfully.";
+        } else {
+            $message = "Error in sending message.";
         }
         }
-?>
-
+    ?>
 
     <header class="header1">
 
@@ -142,7 +145,6 @@
                     <div class="row100">
                         <div class="inputBox">
                             <input type="submit" value="Send" name="submit">
-                            <span style="color:red;"><?php if((!empty($message)) { ?></span>
                         </div>
                     </div>
 
@@ -150,6 +152,7 @@
 
                   
                 </div>
+                <?php if(!empty($message)) echo "<p style='color:red;'>$message</p>"; ?>
              </form>
 
       </div>
