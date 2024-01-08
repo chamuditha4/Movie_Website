@@ -1,0 +1,216 @@
+<?php require="script.php"
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Movie App</title>
+</head>
+<body>
+
+    <?php 
+    
+       if(!empty($_POST["send"])){
+
+         $first_name = $_POST["first_name"];
+         $last_name = $_POST["last_name"];
+         $email = $_POST["email"];
+         $mobile = $_POST["mobile"];
+         $comment = $_POST["comment"];
+         $toEmail = $_POST["gayeshaupeshika@gmail.com"];
+
+
+         $mailHeaders = "FirstName: " . $first_name . "\r\n 
+                          LastName: "    . @last_name . "\r\n 
+                          Email:   "     . @email . "\r\n
+                        Mobile:    "     . @mobile . "\r\name
+                        Comment: "       . @comment . "\r\n";
+
+
+        if(mail($toEmail, $first_name, $last_name, $mailHeaders)) {
+            $Message = "Your Information is Received Successfully. ";
+        }
+        }
+?>
+
+
+    <header class="header1">
+
+        <a href="#" class="logo"><img src="./img/Logo.png" /></a>
+    
+        
+        <nav class="navbar">
+            <a href="#home" class="test">home</a>
+            <a href="#ourservice" class="test">OUR SCREENS</a>
+            <a href="#schedule" class="test">SCHEDULE</a>
+            <a href="#movielibrary" class="test">MOVIE LIBRARY</a>
+            <a href="#location" class="test">LOCATION & CONTACT</a>
+        </nav>
+    
+    
+        <div id="menu-btn" class="fas fa-bars"></div>
+        
+    </header>
+    <div class="swiper-slide slide" style="background: url(./img/banner.png) no-repeat"></div>
+                 
+    <div class="topic1">
+        <h1>MOVIE LIBRARY</h1> 
+        <p class="topic1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores unde porro praesentium, sapiente eum tempora quae corporis voluptate aliquid enim repellendus exercitationem optio earum dolore, consequuntur excepturi illum omnis placeat?</p>
+     </div>        
+    <div class="topic">
+       <h1>Collect yout favorites</h1> 
+    </div>
+    <header class="head1">
+        <form  id="form">
+            <input type="text" placeholder="Search" id="search" class="search">
+        </form>
+    </header>
+    <hr class="line"/>
+    <div id="tags"></div>
+    <div id="myNav" class="overlay">
+
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      
+        <!-- Overlay content -->
+        <div class="overlay-content" id="overlay-content"></div>
+        
+        <a href="javascript:void(0)" class="arrow left-arrow" id="left-arrow">&#8656;</a> 
+        
+        <a href="javascript:void(0)" class="arrow right-arrow" id="right-arrow" >&#8658;</a>
+
+      </div>
+    <main id="main"></main>
+    <div class="pagination">
+        <div class="page" id="prev">Previous Page</div>
+        <div class="current" id="current">1</div>
+        <div class="page" id="next">Next Page</div>
+
+    </div>
+
+    <div class="contactUs">
+        <div class="title">
+            <h2>Get in Touch</h2>
+        </div>
+        <div class="box">
+            <div class="contact form">
+             <h3>Send a Message</h3>
+             <form>
+                <div class="formBox">
+                    <div class="row50">
+                        <div class="inputBox">
+                            <span>First Name</span>
+                            <input type="text" placeholder="John" name="first_name">
+                            
+                        </div>
+
+                        <div class="inputBox">
+                            <span>Last Name</span>
+                            <input type="text" placeholder="Doe" name="last_name">
+                            
+                        </div>
+                    </div>
+                    <div class="row50">
+                        <div class="inputBox">
+                            <span>Email</span>
+                            <input type="email" placeholder="JohDoe@gmail.comn" name="email">
+                            
+                        </div>
+
+                        <div class="inputBox">
+                            <span>Mobile</span>
+                            <input type="text" placeholder="+919876543210" name="mobile">
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="row100">
+                        <div class="inputBox">
+                            <span>Message</span>
+                            <textarea placeholder="Write Your Message Here...." name="comments"></textarea>
+                            
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="row100">
+                        <div class="inputBox">
+                            <input type="submit" value="Send" name="submit">
+                            <span style="color:red;"><?php if((!empty($message)) { ?></span>
+                        </div>
+                    </div>
+
+
+
+                  
+                </div>
+             </form>
+
+      </div>
+
+
+
+            <div class="contact info">
+
+                <h3>Contact Info</h3>
+                <div class="infoBox">
+                    <div>
+                        <span><ion-icon name="location"></ion-icon></span>
+                        <p>Cannaught Place, New Delhi <br> INDIA</p>
+                    </div>
+                    <div>
+                        <span><ion-icon name="mail"></ion-icon></span>
+                          <a href="loremispsum@gmail.com">lore@gmail.com</a>
+                    </div>
+
+                    <div>
+                        <span><ion-icon name="call"></ion-icon></span>
+                          <a href="tel:+919876543210">+919876543210</a>
+                    </div>
+
+                    <ul class="sci">
+                        <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                        <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                        <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                        <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <div class="contact map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.380740374082!2d79.9378510748089!3d6.844877493153335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25069caa2f53b%3A0xe7eae3a8b1f1214d!2seBEYONDS%20eBusiness%20%26%20Digital%20Solutions!5e0!3m2!1sen!2slk!4v1704724770796!5m2!1sen!2slk" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script src="script.js"></script>
+    <script>
+        jQuery('#frmContactus').on('submit',function(e){
+          jQuery('#msg').html('');
+          jQuery('#submit').html('Please wait');
+          jQuery('#submit').attr('disabled',true);
+          jQuery.ajax({
+              url:'script.php',
+              type:'post',
+              data:jQuery('#frmContactus').serialize(),
+              success:function(result){
+                  jQuery('#msg').html(result);
+                  jQuery('#submit').html('Submit');
+                  jQuery('#submit').attr('disabled',false);
+                  jQuery('#frmContactus')[0].reset();
+              }
+          });
+          e.preventDefault();
+        });
+        </script>
+</body>
+</html>
